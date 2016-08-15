@@ -1,0 +1,86 @@
+//Import jviz
+@import "{JVIZ_MODULES}jviz/scss/all";
+
+//Jviz tables main class
+.jviz-modules-tab
+{
+  //Style
+  display: table; width: 100%; overflow-x: auto;
+
+  //Text
+  @include jvizFont; color: $jvizNavy;
+
+  //Border
+  border: { collapse: collapse; width: 0px; }
+
+  //Head class
+  &-head
+  {
+    //Style
+    display: table-header-group; width: 100%; position: relative; height: 30px;
+
+    //Text
+    font-weight: bold;
+
+    //Background
+    background-color: $jvizGrey2;
+
+    //Row
+    &-row { display: table-row; }
+
+    //Cell
+    &-cell
+    {
+      //Stype
+      display: table-cell;
+
+      //Padding
+      padding: { left: 10px; right: 25px; top: 10px; bottom: 10px; }
+
+      //Cursor
+      cursor: pointer;
+
+      //First child
+      &:first-child { border-top-left-radius: 5px !important; }
+
+      //Last child
+      &:last-child { border-top-right-radius: 5px !important; }
+    }
+  }
+
+  //Body class
+  &-body
+  {
+    //Style
+    display: table-row-group;
+
+    //Row
+    &-row
+    {
+      //Style
+      display: table-row;
+
+      //Even rows
+      &:nth-child(even) { background-color: $jvizGrey3; }
+
+      //Odd rows
+      &:nth-child(odd) { background-color: $jvizGrey4; }
+    }
+
+    //Cell
+    &-cell
+    {
+      //Style
+      display: table-cell;
+
+      //Padding
+      padding: { left: 10px; right: 10px; top: 10px; bottom: 10px; }
+    }
+
+    //Body last row first cell
+    &-row:last-child &-cell:first-child { border-bottom-left-radius: 5px; }
+
+    //Body last row last cell
+    &-row:last-child &-cell:last-child { border-bottom-right-radius: 5px; }
+  }
+}
