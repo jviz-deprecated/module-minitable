@@ -67,6 +67,9 @@ jviz.modules.tab.prototype.draw = function(subset)
     $('#' + rows[i].id).on('click', function(e){ return self.onClickRow(rows[i].index); });
   }
 
+  //Call the event
+  this.onDraw(subset.start, subset.end);
+
   //Return this
   return this;
 };
