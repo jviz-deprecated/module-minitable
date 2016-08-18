@@ -57,20 +57,16 @@ jviz.modules.tab.prototype.draw = function(subset)
     rows.push({ id: row_id, index: index });
   }
 
+  //Save this
+  var self = this;
+
   //Add the events
-  for(var i = 0; i < rows.length; i++)
+  for(let i = 0; i < rows.length; i++)
   {
     //Add the event
-    jvizModulesTabRowsEvent(this, rows[i].id, rows[i].index);
+    $('#' + rows[i].id).on('click', function(e){ return self.onClickRow(rows[i].index); });
   }
 
   //Return this
   return this;
 };
-
-//Rows event
-function jvizModulesTabRowsEvent(_this, _id, _index)
-{
-  //Add the click event
-  $('#' + _id).on('click', function(e){ return _this.rowsClick(_index); });
-}
