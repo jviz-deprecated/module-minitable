@@ -13,14 +13,21 @@ jviz.modules.tab = function(opt)
   //Check the parent div
   this._parent = (typeof opt.parent === 'undefined') ? 'body' : opt.parent;
 
+  //Events prefix
+  this._events = 'modules:tab:' + this._id + ':';
+
   //Data object
   this._data = {};
-  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data;
-  this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax;
+  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data; //Source data
+  this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax; //Ajax data
+  this._data.length = 0;
+  this._data.order = []; //Order data
+  this._data.filter = []; //Filtered data
 
   //Columns
   this._columns = {};
   this._columns.src = (typeof opt.columns === 'undefined') ? [] : opt.columns;
+  this._columns.order = {};
 
   //Table head
   this._head = {};
