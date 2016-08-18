@@ -30,12 +30,8 @@ jviz.modules.tab.prototype.rows = function(sel)
   return out;
 };
 
-//Row click
-jviz.modules.tab.prototype.rowsClick = function(index)
+//Return only the checked rows
+jviz.modules.tab.prototype.rowsChecked = function()
 {
-  //Show in console
-  console.log('Clicked on row ' + index);
 
-  //Call the event listener
-  jviz.events.send(this._events + 'click:row', this._data.src[index], index);
 };
