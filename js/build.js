@@ -14,7 +14,7 @@ jviz.modules.tab.prototype.build = function()
   this.head();
 
   //Get the data
-  if(typeof this._data.ajax.url === 'string'){ return this.ajax(); }
+  if(typeof this._data.ajax.url === 'string'){ return this.ajax(this._data.ajax); }
 
   //Parse the data
   this.data(this._data.src);
