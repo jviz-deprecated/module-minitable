@@ -49,8 +49,11 @@ jviz.modules.tab.prototype.draw = function(subset)
       //Get the cell id
       var cell_id = this._body.cell.id + index + '_' + j;
 
+      //Get the content
+      var content = (typeof cell.parse === 'function') ? cell.parse(cell.key, data, index, cell) : data[cell.key];
+
       //Create the cell
-      jviz.dom.append({ type: 'div', id: cell_id, class: this._body.cell.class, html: data[cell.key] }, row_id);
+      jviz.dom.append({ type: 'div', id: cell_id, class: this._body.cell.class, html: content }, row_id);
     }
 
     //Add the row index
