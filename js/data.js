@@ -2,7 +2,7 @@
 jviz.modules.tab.prototype.data = function(data)
 {
   //Check for undefined data
-  if(typeof data === 'undefined'){ return this; }
+  if(typeof data === 'undefined'){ var data = this._data.src; }
 
   //Check for array
   if(jviz.array.is(data) === false){ data = [ data ]; }
