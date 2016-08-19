@@ -10,14 +10,14 @@ jviz.modules.tab.prototype.build = function()
   //Append the table body
   jviz.dom.append({ type: 'div', id: this._body.id, class: this._body.class }, this._id);
 
-  //Build the head
-  this.head();
+  //Parse the columns
+  this.columns();
 
   //Get the data
-  if(typeof this._data.ajax.url === 'string'){ return this.ajax(this._data.ajax); }
+  if(typeof this._data.ajax.url === 'string'){ return this.ajax(); }
 
   //Parse the data
-  this.data(this._data.src);
+  this.data();
 
   //Draw the data
   return this.draw();
