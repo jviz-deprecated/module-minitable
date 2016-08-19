@@ -1,5 +1,5 @@
 //Get the selected rows data
-jviz.modules.tab.prototype.rows = function(sel)
+jviz.modules.tab.prototype.getRows = function(sel)
 {
   //Check the selection
   if(typeof sel === 'undefined'){ return this._data.src; }
@@ -30,8 +30,8 @@ jviz.modules.tab.prototype.rows = function(sel)
   return out;
 };
 
-//Return only the checked rows
-jviz.modules.tab.prototype.rowsChecked = function()
+//Return only the selected rows
+jviz.modules.tab.prototype.getRowsSelected = function()
 {
-
+  
 };
