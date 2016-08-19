@@ -2,7 +2,7 @@
 jviz.modules.tab.prototype.ajax = function(opt)
 {
   //Check the options
-  if(typeof opt === 'undefined'){ return this; }
+  if(typeof opt === 'undefined'){ var opt = this._data.ajax; }
 
   //Check the method
   if(typeof opt.method === 'undefined'){ opt.method = 'get'; }
