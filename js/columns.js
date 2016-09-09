@@ -5,7 +5,7 @@ jviz.modules.tab.prototype.columns = function(list)
   if(typeof list === 'undefined'){ var list = this._columns.src; }
 
   //Append the head row
-  jviz.dom.html({ type: 'div', id: this._head.row.id, class: this._head.row.class }, this._head.id);
+  jviz.dom.html({ _tag: 'div', id: this._head.row.id, class: this._head.row.class }, this._head.id);
 
   //Save the list
   this._columns.src = this.parseColumns(list);
@@ -23,7 +23,7 @@ jviz.modules.tab.prototype.columns = function(list)
     var id = this._head.cell.id + i;
 
     //Add the cell
-    jviz.dom.append({ type: 'div', id: id, class: this._head.cell.class, html: cell.title }, this._head.row.id);
+    jviz.dom.append({ _tag: 'div', id: id, class: this._head.cell.class, _html: cell.title }, this._head.row.id);
   }
 
   //Save this
@@ -73,7 +73,7 @@ jviz.modules.tab.prototype.parseColumns = function(list)
 jviz.modules.tab.prototype.getColumns = function(list)
 {
   //Check the index
-  if(typeof list === 'undefined'){ retur this._columns.src; }
+  if(typeof list === 'undefined'){ return this._columns.src; }
 
   //Check for array
   if(jviz.array.is(list) === false){ list = [ list ]; }
