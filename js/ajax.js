@@ -14,7 +14,7 @@ jviz.modules.tab.prototype.ajax = function(opt)
   var self = this;
 
   //Do the ajax request
-  var ajax = $.ajax({ method: opt.method.toUpperCase(); url: opt.url, dataType: 'json' });
+  var ajax = $.ajax({ method: opt.method.toUpperCase(), url: opt.url, dataType: 'json' });
 
   //Done function
   ajax.done(function(data){ self.ajaxDone(data); });
