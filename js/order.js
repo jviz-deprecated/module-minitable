@@ -13,8 +13,15 @@ jviz.modules.tab.prototype.order = function(columns)
   //Get the data
   var data = this._data.src;
 
+  //Get this
+  var self = this;
+
   //Sort the order array
-  this._data.order.sort(function(a, b){ return jvizModulesTabOrderCompare(a, b, columns, data); });
+  this._data.order.sort(function(a, b)
+  {
+    //Return
+    return self.orderCompare(a, b, columns, data);
+  });
 
   //Send the event
   jviz.events.send(this._events + 'data:ordered', columns, this._data.order, this._data.length);
@@ -41,7 +48,7 @@ jviz.modules.tab.prototype.orderClear = function()
 };
 
 //Function for compare two elements
-function jvizModulesTabOrderCompare(left, right, columns, data)
+jviz.modules.tab.prototype.orderCompare = function(left, right, columns, data)
 {
   //Compare all
   for(var key in columns)
