@@ -5,7 +5,7 @@ jviz.modules.tab.prototype.draw = function(subset)
   if(typeof subset === 'undefined'){ var subset = {}; }
 
   //Reset the body
-  jviz.dom.html('', this._body.id);
+  jviz.dom.html(this._body.id, '');
 
   //Check the data length
   if(this._data.length === 0){ return this; }
@@ -35,7 +35,7 @@ jviz.modules.tab.prototype.draw = function(subset)
     var row_id = this._body.row.id + index;
 
     //Create the new row
-    jviz.dom.append({ _tag: 'div', id: row_id, class: this._body.row.class }, this._body.id);
+    jviz.dom.append(this._body.id, { _tag: 'div', id: row_id, class: this._body.row.class });
 
     //Read all the cells
     for(var j = 0; j < this._columns.src.length; j++)
@@ -53,7 +53,7 @@ jviz.modules.tab.prototype.draw = function(subset)
       var content = (typeof cell.parse === 'function') ? cell.parse(cell.key, data, index, cell) : data[cell.key];
 
       //Create the cell
-      jviz.dom.append({ _tag: 'div', id: cell_id, class: this._body.cell.class, _html: content }, row_id);
+      jviz.dom.append(row_id, { _tag: 'div', id: cell_id, class: this._body.cell.class, _html: content });
     }
 
     //Add the row index
