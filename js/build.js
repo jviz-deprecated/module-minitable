@@ -2,13 +2,13 @@
 jviz.modules.tab.prototype.build = function()
 {
   //Append the table
-  jviz.dom.append({ _tag: 'div', id: this._id, class: this._class }, this._parent);
+  jviz.dom.append(this._parent, { _tag: 'div', id: this._id, class: this._class });
 
   //Append the table head
-  jviz.dom.append({ _tag: 'div', id: this._head.id, class: this._head.class }, this._id);
+  jviz.dom.append(this._id, { _tag: 'div', id: this._head.id, class: this._head.class });
 
   //Append the table body
-  jviz.dom.append({ _tag: 'div', id: this._body.id, class: this._body.class }, this._id);
+  jviz.dom.append(this._id, { _tag: 'div', id: this._body.id, class: this._body.class });
 
   //Parse the columns
   this.columns();
