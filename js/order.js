@@ -24,7 +24,7 @@ jviz.modules.tab.prototype.order = function(columns)
   });
 
   //Send the event
-  jviz.events.send(this._events + 'data:ordered', columns, this._data.order, this._data.length);
+  this._events.emit('data:ordered', columns, this._data.order, this._data.length);
 
   //Save the columns ordered
   this._columns.order = columns;
