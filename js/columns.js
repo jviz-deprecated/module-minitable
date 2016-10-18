@@ -76,7 +76,7 @@ jviz.modules.tab.prototype.getColumns = function(list)
   if(typeof list === 'undefined'){ return this._columns.src; }
 
   //Check for array
-  if(jviz.array.is(list) === false){ list = [ list ]; }
+  if(jviz.is.array(list) === false){ list = [ list ]; }
 
   //Output columns
   var out = [];
