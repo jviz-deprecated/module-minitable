@@ -7,12 +7,14 @@ The base table module for jviz.
 You can install the `tab` module using the jviz CLI:
 
 ```
-jviz install --save tab
+jviz install tab
 ```
 
-## Options
+## Reference
 
-### ajax `Object`
+### Options
+
+#### ajax
 
 Do an ajax request to get the data of the table from the server. The `ajax` options gets the following keys:
 
@@ -36,11 +38,11 @@ jviz.modules.tab({
 });
 ```
 
-### columns `Array`
+#### columns
 
 An array with the columns information.
 
-### data `Array`
+#### data
 
 An array with the data to display on the table.
 
@@ -55,14 +57,31 @@ jviz.modules.tab({
 });
 ```
 
-### parent `String`
+#### parent
 
-Sets the parent element where the table must be builded.
+(**Mandatory**) Sets the parent element where the table must be builded.
 
 
-## Events
+### API
 
-### Register a new event
+#### tab.check(index)
+
+Check a row.
+
+#### tab.checkAll()
+
+Checks all rows of the table.
+
+#### tab.uncheck(index)
+
+Uncheck a row.
+
+#### tab.uncheckAll()
+
+Un-checks all rows of the table.
+
+
+### Events
 
 You can register a new event using the `on` method. For example, with the following code
 
@@ -72,8 +91,11 @@ tab.on('click:head', function(){ /* ... */ });
 
 the function provided will he called when the user clicks on some cell of the header.
 
-### Reference
-
-#### click:head
+#### tab.on('click:head', listener)
 
 This event will be executed when the user clicks on a cell of the header.
+
+
+## License
+
+[MIT LICENSE](./LICENSE) &copy; The Jviz Team.
