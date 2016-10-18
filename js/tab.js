@@ -5,16 +5,13 @@ jviz.modules.tab = function(opt)
   if(typeof opt === 'undefined'){ return console.error('jviz-tab: undefined table options. Check the documentation.'); }
 
   //Check the table id
-  this._id = (typeof opt.id === 'undefined') ? jviz.utils.getID({ prefix: 'jvizTab' }) : opt.id;
+  this._id = (typeof opt.id === 'undefined') ? jviz.utils.getID({ prefix: 'jviz-tab' }) : opt.id;
 
   //Check the table class
   this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-tab' : opt.class;
 
   //Check the parent div
   this._parent = (typeof opt.parent === 'undefined') ? 'body' : opt.parent;
-
-  //Events prefix
-  this._events = 'modules:tab:' + this._id + ':';
 
   //Data object
   this._data = {};
@@ -58,6 +55,9 @@ jviz.modules.tab = function(opt)
   this._body.cell = {};
   this._body.cell.id = this._body.id + '-cell'; //Table body cell id
   this._body.cell.class = this._body.class + '-cell'; //Table body cell class
+
+  //Build the events
+  this._events = new jviz.events();
 
   //Build the table
   this.build();
