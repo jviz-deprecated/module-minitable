@@ -5,7 +5,7 @@ jviz.modules.tab.prototype.getRows = function(sel)
   if(typeof sel === 'undefined'){ return this._data.src; }
 
   //Check for array
-  if(jviz.array.is(sel) === false){ sel = [ sel ]; }
+  if(jviz.is.array(sel) === false){ sel = [ sel ]; }
 
   //New array
   var out = [];
@@ -33,5 +33,5 @@ jviz.modules.tab.prototype.getRows = function(sel)
 //Return only the selected rows
 jviz.modules.tab.prototype.getRowsSelected = function()
 {
-  
+
 };
