@@ -34,7 +34,7 @@ jviz.modules.tab.prototype.ajaxDone = function(data)
   }
 
   //Check for array
-  if(jviz.array.is(data) === false){ data = [ data ]; }
+  if(jviz.is.array(data) === false){ data = [ data ]; }
 
   //Save the data
   this.data(data);
