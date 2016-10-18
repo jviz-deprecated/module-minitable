@@ -70,8 +70,11 @@ jviz.modules.tab.prototype.draw = function(subset)
     $('#' + rows[i].id).on('click', function(e){ return self.onClickRow(rows[i].index); });
   }
 
-  //Call the event
-  this.onDraw(subset.start, subset.end);
+  //Show in console
+  jviz.console.log('Draw table [' + subset.start + ' , ' + subset.end + ']');
+
+  //Emit the event
+  this._events.emit('draw', subset.start, subset.end);
 
   //Return this
   return this;
