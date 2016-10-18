@@ -30,7 +30,7 @@ jviz.modules.tab.prototype.filter = function(condition)
   this.orderClear();
 
   //Send the event
-  jviz.events.send(this._events + 'data:filtered', this._data.filter, this._data.length);
+  this._events.emit('data:filtered', this._data.filter, this._data.length);
 
   //Return this
   return this;
