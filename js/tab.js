@@ -80,6 +80,7 @@ jviz.modules.tab = function(opt)
   this._check.enabled = false; //Check rows is enabled
   this._check.all = false; //All checkboxes are checked
   this._check.head = null; //HEad checkbox element
+  this._check.el = [];
 
   //Build the events
   this._events = new jviz.events();
@@ -92,11 +93,4 @@ jviz.modules.tab = function(opt)
 };
 
 //Register an event
-jviz.modules.tab.prototype.on = function(name, callback)
-{
-  //Add the event
-  this._events.add(id, callback);
-
-  //Return this
-  return this;
-};
+jviz.modules.tab.prototype.on = function(name, listener){ return this._events.add(name, listener); };
