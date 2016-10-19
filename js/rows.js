@@ -49,7 +49,7 @@ jviz.modules.tab.prototype.rowsEvent = function(index)
     var id = self._body.cell.id + index + '_' + col_id;
 
     //Add the column event
-    jviz.dom.event('click', function(e){ return self.rowsClick(index, col_id); });
+    jviz.dom.event(id, 'click', function(e){ return self.rowsClick(index, col_id); });
   });
 
   //Add the row event
