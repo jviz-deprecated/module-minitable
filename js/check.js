@@ -56,6 +56,9 @@ jviz.modules.tab.prototype.checkAll = function(emit_event)
   //Set all checked as true
   this._check.all = true;
 
+  //Check the head checkbox
+  this.headCheck();
+
   //Check for emit the event
   if(emit_event === false){ return; }
 
@@ -120,6 +123,9 @@ jviz.modules.tab.prototype.uncheckAll = function(emit_event)
 
   //Set all checked as false
   this._check.all = false;
+
+  //Unheck the head checkbox
+  this.headUncheck();
 
   //Check for emit the event
   if(emit_event === false){ return; }
