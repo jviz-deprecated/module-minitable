@@ -141,7 +141,7 @@ jviz.modules.tab.prototype.checked = function()
   var list = [];
 
   //Read all the data
-  for(var i = 0; i < this._data.length; i++)
+  for(var i = 0; i < this._data.src.length; i++)
   {
     //Check if is checked
     if(this._data.checked[i] === false){ continue; }
@@ -161,7 +161,7 @@ jviz.modules.tab.prototype.checked = function()
 jviz.modules.tab.prototype.clearCheck = function()
 {
   //Remove all checks
-  this._data.check = jviz.math.array.create(this._data.length, false);
+  this._data.check = jviz.math.array.create(this._data.src.length, false);
 };
 
 //Check event
