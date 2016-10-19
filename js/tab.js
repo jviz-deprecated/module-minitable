@@ -33,6 +33,7 @@ jviz.modules.tab = function(opt)
   this._draw = {};
   this._draw.start = -1; //Draw start position
   this._draw.end = -1; //Draw end position
+  this._draw.rows = []; //Rows active
 
   //Table head
   this._head = {};
