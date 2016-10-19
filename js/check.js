@@ -144,7 +144,7 @@ jviz.modules.tab.prototype.checked = function()
   for(var i = 0; i < this._data.src.length; i++)
   {
     //Check if is checked
-    if(this._data.checked[i] === false){ continue; }
+    if(this._data.check[i] === false){ continue; }
 
     //Get the row
     var row = this._data.src[i];
