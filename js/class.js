@@ -60,34 +60,14 @@ jviz.modules.tab.prototype.removeClass = function(index, name)
 //Clear the row class
 jviz.modules.tab.prototype.clearClass = function()
 {
-  //Read all the rows
+  //Initialize the class array
+  this._data.class = [];
+
+  //Read all the data values
   for(var i = 0; i < this._data.length; i++)
   {
-    //Check for undefined
-    if(typeof this._data.class[i] === 'undefined'){ continue; }
-
-    //Check for empty array
-    if(this._data.class[i].length === 0){ continue; }
-
-    //Check the index
-    if(jviz.math.array.has(this._draw.rows, index) === true)
-    {
-      //Get the row ID
-      var row = this._body.row.id + i;
-
-      //Remove the classes
-      for(var j = 0; j < this._data.class[i].length; j++)
-      {
-        //Get the class value
-        var c = this._data.class[i][j];
-
-        //Remove the class
-        jviz.dom.class.remove(row, c);
-      }
-    }
-
-    //Delete the array
-    delete this._data.class[i];
+    //Add an empty array
+    this._data.class.push([]);
   }
 
   //Return this
