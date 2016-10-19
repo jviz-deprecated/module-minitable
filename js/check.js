@@ -14,6 +14,16 @@ jviz.modules.tab.prototype.check = function(index, emit_event)
     this._check.el[index].checked(true);
   }
 
+  //Check if all checkboxes are active
+  if(jviz.math.array.has(this._data.check, false) === false)
+  {
+    //Set all checkboxes as true
+    this._check.all = true;
+
+    //Check the head checkbox
+    this.headCheck();
+  }
+
   //Check to emit the event
   if(emit_event === false){ return; }
 
@@ -41,6 +51,16 @@ jviz.modules.tab.prototype.uncheck = function(index, emit_event)
   {
     //Check this element
     this._check.el[index].checked(false);
+  }
+
+  //Check the checked all
+  if(this._check.all === true)
+  {
+    //Set the flag as false
+    this._check.all = false;
+
+    //Uncheck the head checkbox
+    this.headUncheck();
   }
 
   //Check the emit emit value
