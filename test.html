@@ -1,53 +1,53 @@
-<html>
-<head>
-  <!-- Styles -->
-  <link rel="stylesheet" type="text/css" href="./build/font.css">
-  <link rel="stylesheet" type="text/css" href="./build/jviz.css">
-  <link rel="stylesheet" type="text/css" href="./build/tab.css">
-  <!-- JavaScript -->
-  <script type="text/javascript" src="./build/vendor/jquery.min.js"></script>
-  <script type="text/javascript" src="./build/jviz.js"></script>
-  <script type="text/javascript" src="./build/tab.js"></script>
-</head>
-<body class="jviz-body" style="padding:50px;">
-  <script type="text/javascript">
-    //Table element
-    var t = null;
+<!-- Styles -->
+<link rel="stylesheet" type="text/css" href="./build/font.css">
+<link rel="stylesheet" type="text/css" href="./build/jviz.css">
+<link rel="stylesheet" type="text/css" href="./build/jviz-default.css">
+<link rel="stylesheet" type="text/css" href="./build/tab.css">
+<!-- JavaScript -->
+<script type="text/javascript" src="./build/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="./build/jviz.js"></script>
+<script type="text/javascript" src="./build/tab.js"></script>
+<!-- Test style -->
+<style> body { padding: 50px !important; } </style>
+<style> .test { background-color: #5dc1ef; } </style>
+<!-- Test scripts -->
+<script type="text/javascript">
+  //Table element
+  var t = null;
 
-    //Document ready function
-    jviz.dom.ready(function()
-    {
-      //Table options
-      var opt = { parent: 'test', id: 'myTable' };
+  //Document ready function
+  jviz.dom.ready(function()
+  {
+    //Table options
+    var opt = { parent: 'test', id: 'myTable' };
 
-      //Columns
-      opt.columns =
-      [
-        { type: 'checkbox' },
-        { type: 'default', title: 'Cell 1', key: 'key1' },
-        { type: 'default', title: 'Cell 2', key: 'key2' },
-        { type: 'default', title: 'Cell 3', key: 'key3' }
-      ];
+    //Columns
+    opt.columns =
+    [
+      { type: 'checkbox' },
+      { type: 'default', title: 'Cell 1', key: 'key1' },
+      { type: 'default', title: 'Cell 2', key: 'key2' },
+      { type: 'default', title: 'Cell 3', key: 'key3' }
+    ];
 
-      //Data
-      opt.data =
-      [
-        { key1: 0, key2: 'x', key3: '0' },
-        { key1: 3, key2: 'v', key3: '1' },
-        { key1: 0, key2: 'p', key3: '2' },
-        { key1: 2, key2: 'c', key3: '3' }
-      ];
+    //Data
+    opt.data =
+    [
+      { key1: 0, key2: 'x', key3: '0' },
+      { key1: 3, key2: 'v', key3: '1' },
+      { key1: 0, key2: 'p', key3: '2' },
+      { key1: 2, key2: 'c', key3: '3' }
+    ];
 
-      //Initialize the table
-      t = new jviz.modules.tab(opt);
+    //Initialize the table
+    t = new jviz.modules.tab(opt);
 
-      //Add the check event
-      t.on('check:row', function(row, index){ console.log('Checked row ' + index); });
+    //Add the check event
+    t.on('check:row', function(row, index){ console.log('Checked row ' + index); });
 
-      //Add the uncheck event
-      t.on('uncheck:row', function(row, index){ console.log('Unchecked row ' + index); });
-    });
-  </script>
-  <div id="test"></div>
-</body>
-</html>
+    //Add the uncheck event
+    t.on('uncheck:row', function(row, index){ console.log('Unchecked row ' + index); });
+  });
+</script>
+<!-- Test div -->
+<div id="test"></div>
