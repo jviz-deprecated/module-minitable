@@ -104,13 +104,13 @@ jviz.modules.tab.prototype.draw = function(subset)
   for(var i = 0; i < this._draw.rows.length; i++)
   {
     //Add the row event
-    this.rowsEvent(this._draw.rows[i].index);
+    this.rowsEvent(this._draw.rows[i]);
 
     //Check if checkboxes are enabled
     if(this._check.enabled === false){ continue; }
 
     //Add the checkbox event
-    this.checkEvent(this._draw.rows[i].index);
+    this.checkEvent(this._draw.rows[i]);
   }
 
   //Show in console
