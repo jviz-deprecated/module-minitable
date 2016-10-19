@@ -32,9 +32,35 @@ jviz.modules.tab.prototype.check = function(index, emit_event)
 };
 
 //Check all rows
-jviz.modules.tab.prototype.checkAll = function()
+jviz.modules.tab.prototype.checkAll = function(emit_event)
 {
-  //
+  //Check the emit event
+  if(typeof emit_event === 'undefined'){ var emit_event = true; }
+
+  //Read the full list
+  for(var i = 0; i < this._data.check.length; i++)
+  {
+    //Check for active
+    if(this._data.check[i] === true){ continue; }
+
+    //Active this element
+    this._data.check[i] = true;
+
+    //Check the checkbox
+    if(typeof this._check.el[i] === 'undefined'){ continue; }
+
+    //Check this checkbox
+    this._check.el[i].checked(true);
+  }
+
+  //Set all checked as true
+  this._check.all = true;
+
+  //Check for emit the event
+  if(emit_event === false){ return; }
+
+  //Emit the check all event
+  this._events.emit('check:all');
 };
 
 //Uncheck a row
@@ -71,9 +97,35 @@ jviz.modules.tab.prototype.uncheck = function(index, emit_event)
 };
 
 //Uncheck all rows
-jviz.modules.tab.prototype.uncheckAll = function()
+jviz.modules.tab.prototype.uncheckAll = function(emit_event)
 {
-  //
+  //Check the emit event
+  if(typeof emit_event === 'undefined'){ var emit_event = true; }
+
+  //Read the full list
+  for(var i = 0; i < this._data.check.length; i++)
+  {
+    //Check for inactive
+    if(this._data.check[i] === false){ continue; }
+
+    //Uncheck this element
+    this._data.check[i] = false;
+
+    //Check the checkbox
+    if(typeof this._check.el[i] === 'undefined'){ continue; }
+
+    //Uncheck this checkbox
+    this._check.el[i].checked(false);
+  }
+
+  //Set all checked as false
+  this._check.all = false;
+
+  //Check for emit the event
+  if(emit_event === false){ return; }
+
+  //Emit the uncheck all event
+  this._events.emit('uncheck:all');
 };
 
 //Get the checked rows
