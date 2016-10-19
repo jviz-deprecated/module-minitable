@@ -20,11 +20,19 @@ jviz.modules.tab = function(opt)
   this._data.length = 0;
   this._data.order = []; //Order data
   this._data.filter = []; //Filtered data
+  this._data.class = []; //Data class
+  this._data.check = []; //Data checked
 
   //Columns
   this._columns = {};
   this._columns.src = (typeof opt.columns === 'undefined') ? [] : opt.columns;
   this._columns.order = {};
+  this._columns.type = [ 'default', 'checkbox', 'button' ]; //Columns type
+
+  //Draw info
+  this._draw = {};
+  this._draw.start = -1; //Draw start position
+  this._draw.end = -1; //Draw end position
 
   //Table head
   this._head = {};
@@ -41,6 +49,11 @@ jviz.modules.tab = function(opt)
   this._head.cell.id = this._head.id + '-cell'; //Table head cell id
   this._head.cell.class = this._head.class + '-cell'; //Table head cell class
 
+  //Head check
+  this._head.cell.check = {};
+  this._head.cell.check.id = this._head.cell.id + '-check'; //Check head ID
+  this._head.cell.check.class = this._head.cell.class + '-check'; //Check head class
+
   //Table body
   this._body = {};
   this._body.id = this._id + '-body'; //Table body id
@@ -56,11 +69,33 @@ jviz.modules.tab = function(opt)
   this._body.cell.id = this._body.id + '-cell'; //Table body cell id
   this._body.cell.class = this._body.class + '-cell'; //Table body cell class
 
+  //Body check cell
+  this._body.cell.check = {};
+  this._body.cell.check.id = this._body.cell.id + '-check'; //Body check cell ID
+  this._body.cell.check.class = this._body.cell.class + '-check'; //Body check cell class
+
+  //Check rows
+  this._check = {};
+  this._check.class = this._class + '-checkbox'; //Checkbox class
+  this._check.enabled = false; //Check rows is enabled
+  this._check.all = false; //All checkboxes are checked
+  this._check.head = null; //HEad checkbox element
+
   //Build the events
   this._events = new jviz.events();
 
   //Build the table
   this.build();
+
+  //Return this
+  return this;
+};
+
+//Register an event
+jviz.modules.tab.prototype.on = function(name, callback)
+{
+  //Add the event
+  this._events.add(id, callback);
 
   //Return this
   return this;
