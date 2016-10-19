@@ -75,6 +75,9 @@ jviz.modules.tab.prototype.clearCheck = function()
 //Check event
 jviz.modules.tab.prototype.checkEvent = function(index)
 {
+  //Check if checkboes are enabled
+  if(this._check.enabled === false){ return; }
+  
   //Save this
   var self = this;
 
