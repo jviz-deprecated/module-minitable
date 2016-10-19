@@ -29,6 +29,9 @@ jviz.modules.tab.prototype.data = function(data)
   //Reset the row class
   this.clearClass();
 
+  //Reset the checkboxes
+  this.clearCheck();
+
   //Return this
   return this;
 };
