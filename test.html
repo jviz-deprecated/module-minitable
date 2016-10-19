@@ -43,10 +43,16 @@
     t = new jviz.modules.tab(opt);
 
     //Add the check event
-    t.on('check:row', function(row, index){ console.log('Checked row ' + index); });
+    t.on('check:row', function(row, index){ console.info('Checked row ' + index); });
 
     //Add the uncheck event
-    t.on('uncheck:row', function(row, index){ console.log('Unchecked row ' + index); });
+    t.on('uncheck:row', function(row, index){ console.info('Unchecked row ' + index); });
+
+    //Add the checkall event
+    t.on('check:all', function(){ console.info('Checked all'); });
+
+    //Add the uncheck all event
+    t.on('uncheck:all', function(){ console.info('Unchecked all'); });
   });
 </script>
 <!-- Test div -->
