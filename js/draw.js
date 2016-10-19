@@ -59,7 +59,7 @@ jviz.modules.tab.prototype.draw = function(subset)
         jviz.dom.class.add(cell_id, this._body.cell.check.class);
 
         //Build the checkbox
-        var cell_box = new jviz.components.checkbox({ parent: cell_id, class: this._check.class });
+        var cell_box = new jviz.components.checkbox({ parent: cell_id, class: this._check.class, checked: this._data.check[index] });
 
         //Continue
         continue;
