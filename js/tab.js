@@ -79,7 +79,7 @@ jviz.modules.tab = function(opt)
   this._check.class = this._class + '-checkbox'; //Checkbox class
   this._check.enabled = false; //Check rows is enabled
   this._check.all = false; //All checkboxes are checked
-  this._check.head = null; //HEad checkbox element
+  this._check.head = null; //Head checkbox element
   this._check.el = [];
 
   //Build the events
