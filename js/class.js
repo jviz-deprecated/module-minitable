@@ -10,9 +10,6 @@ jviz.modules.tab.prototype.addClass = function(index, name)
   //Check the index value
   if(index < 0 || this._data.length <= index){ return this; }
 
-  //Check the row class
-  if(typeof this._data.class[index] === 'undefined'){ this._data.class[index] = []; }
-
   //Check if the row has this class
   if(jviz.math.array.has(this._data.class[index], name) === true){ return this; }
 
@@ -42,7 +39,7 @@ jviz.modules.tab.prototype.removeClass = function(index, name)
   if(index < 0 || this._data.length <= index){ return this; }
 
   //Check the row class
-  if(typeof this._data.class[index] === 'undefined'){ return this; }
+  if(this._data.class[index].length === 0){ return this; }
 
   //Delete the class
   jviz.math.array.remove(this._data.class[index], name);
