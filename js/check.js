@@ -1,17 +1,24 @@
 //Check a row
-jviz.modules.tab.prototype.check = function(index)
+jviz.modules.tab.prototype.check = function(index, emit_event)
 {
+  //Check the emit event
+  if(typeof emit_event === 'undefined'){ var emit_event = true; }
+
   //Update the check list
   this._data.check[index] = true;
 
+  //Check if this checkbox exists
+  if(typeof this._check.el[index] !== 'undefined')
+  {
+    //Check this element
+    this._check.el[index].checked(true);
+  }
+
+  //Check to emit the event
+  if(emit_event === false){ return; }
+
   //Emit the check event
   this._events.emit('check:row', this._data.src[index], index);
-
-  //Check if this checkbox exists
-  if(typeof this._check.el[index] === 'undefined'){ return; }
-
-  //Check this element
-  this._check.el[index].checked(true);
 };
 
 //Check all rows
@@ -21,19 +28,26 @@ jviz.modules.tab.prototype.checkAll = function()
 };
 
 //Uncheck a row
-jviz.modules.tab.prototype.uncheck = function(index)
+jviz.modules.tab.prototype.uncheck = function(index, emit_event)
 {
+  //Check the emit event
+  if(typeof emit_event === 'undefined'){ var emit_event = true; }
+
   //Update the check list
   this._data.check[index] = false;
 
+  //Check if this checkbox exists
+  if(typeof this._check.el[index] !== 'undefined')
+  {
+    //Check this element
+    this._check.el[index].checked(false);
+  }
+
+  //Check the emit emit value
+  if(emit_event === false){ return; }
+
   //Emit the uncheck event
   this._events.emit('uncheck:row', this._data.src[index], index);
-
-  //Check if this checkbox exists
-  if(typeof this._check.el[index] === 'undefined'){ return; }
-
-  //Check this element
-  this._check.el[index].checked(false);
 };
 
 //Uncheck all rows
@@ -77,7 +91,7 @@ jviz.modules.tab.prototype.checkEvent = function(index)
 {
   //Check if checkboes are enabled
   if(this._check.enabled === false){ return; }
-  
+
   //Save this
   var self = this;
 
@@ -91,6 +105,6 @@ jviz.modules.tab.prototype.checkEvent = function(index)
     var status = el.checked();
 
     //Check or uncheck the checkbox
-    (status === true) ? self.check(index) : self.uncheck(index);
+    (status === true) ? self.check(index, true) : self.uncheck(index, true);
   });
 };
