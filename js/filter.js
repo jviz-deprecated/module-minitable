@@ -2,7 +2,7 @@
 jviz.modules.tab.prototype.filter = function(condition)
 {
   //Check the condition
-  if(typeof condition !== 'function'){ return this.filterClear(); }
+  if(typeof condition !== 'function'){ return this.clearFilter(); }
 
   //Reset the filter array
   this._data.filter = [];
@@ -27,7 +27,7 @@ jviz.modules.tab.prototype.filter = function(condition)
   this._data.length = this._data.filter.length;
 
   //Reset the order
-  this.orderClear();
+  this.clearOrder();
 
   //Send the event
   this._events.emit('data:filtered', this._data.filter, this._data.length);
@@ -37,7 +37,7 @@ jviz.modules.tab.prototype.filter = function(condition)
 };
 
 //Initialize the filter array
-jviz.modules.tab.prototype.filterClear = function()
+jviz.modules.tab.prototype.clearFilter = function()
 {
   //Clear the filter array
   this._data.filter = Array.apply(null, Array(this._data.src.length)).map(function(v,i){ return i; });
@@ -46,7 +46,7 @@ jviz.modules.tab.prototype.filterClear = function()
   this._data.length = this._data.src.length;
 
   //Reset the order
-  this.orderClear();
+  this.clearOrder();
 
   //Return this
   return this;
