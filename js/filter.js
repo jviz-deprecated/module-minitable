@@ -29,6 +29,9 @@ jviz.modules.tab.prototype.filter = function(condition)
   //Reset the order
   this.clearOrder();
 
+  //Reset the checkboxes
+  //this.clearCheck();
+
   //Send the event
   this._events.emit('data:filtered', this._data.filter, this._data.length);
 
