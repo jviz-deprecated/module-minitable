@@ -84,15 +84,11 @@ jviz.modules.tab.prototype.draw = function(subset)
       jviz.dom.html(cell_id, content);
     }
 
-    //Check the row class
-    if(typeof this._data.class[index] !== 'undefined')
+    //Add the class to this row
+    for(var j = 0; j < this._data.class[index].length; j++)
     {
-      //Add the class to this row
-      for(var j = 0; j < this._data.class[index].length; i++)
-      {
-        //Add the row class
-        jviz.dom.class.add(row_id, this._data.class[index][j]);
-      }
+      //Add the row class
+      jviz.dom.class.add(row_id, this._data.class[index][j]);
     }
 
     //Save the row index
