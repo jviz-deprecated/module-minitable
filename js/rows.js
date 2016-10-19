@@ -63,5 +63,5 @@ jviz.modules.tab.prototype.rowsClick = function(index_row, index_cell)
   console.log('Clicked on row ' + index_row + ' and cell ' + index_cell);
 
   //Call the event listener
-  this._events.emit('click:row', this._data.src[index], this._columns.src[index_cell].key, index_row, index_cell);
+  this._events.emit('click:row', this._data.src[index_row], this._columns.src[index_cell].key, index_row, index_cell);
 };
