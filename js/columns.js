@@ -67,6 +67,13 @@ jviz.modules.tab.prototype.columns = function(list)
     $('#' + self._head.cell.id + i).click(function(e){ return self.columnsClick(i); });
   }
 
+  //Set the checkbox event
+  if(this._check.enabled === true)
+  {
+    //Add the checkbox head event
+    this.headCheckEvent();
+  }
+
   //Return this
   return this;
 };
