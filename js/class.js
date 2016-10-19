@@ -8,7 +8,7 @@ jviz.modules.tab.prototype.addClass = function(index, name)
   if(typeof index !== 'number'){ return this; }
 
   //Check the index value
-  if(index < 0 || this._data.length <= index){ return this; }
+  if(index < 0 || this._data.src.length <= index){ return this; }
 
   //Check if the row has this class
   if(jviz.math.array.has(this._data.class[index], name) === true){ return this; }
@@ -36,7 +36,7 @@ jviz.modules.tab.prototype.removeClass = function(index, name)
   if(typeof index !== 'number'){ return this; }
 
   //Check the index value
-  if(index < 0 || this._data.length <= index){ return this; }
+  if(index < 0 || this._data.src.length <= index){ return this; }
 
   //Check the row class
   if(this._data.class[index].length === 0){ return this; }
@@ -61,7 +61,7 @@ jviz.modules.tab.prototype.clearClass = function()
   this._data.class = [];
 
   //Read all the data values
-  for(var i = 0; i < this._data.length; i++)
+  for(var i = 0; i < this._data.src.length; i++)
   {
     //Add an empty array
     this._data.class.push([]);
