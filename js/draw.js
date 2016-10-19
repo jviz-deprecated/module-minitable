@@ -23,7 +23,7 @@ jviz.modules.tab.prototype.draw = function(subset)
   var rows = [];
 
   //Reset the checked element
-  this.check.el = [];
+  this._check.el = [];
 
   //Display the data
   for(var i = this._draw.start; i <= this._draw.end; i++)
