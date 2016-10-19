@@ -22,6 +22,9 @@ jviz.modules.tab.prototype.draw = function(subset)
   //Array with the added rows
   var rows = [];
 
+  //Reset the checked element
+  this.check.el = [];
+
   //Display the data
   for(var i = this._draw.start; i <= this._draw.end; i++)
   {
@@ -58,8 +61,17 @@ jviz.modules.tab.prototype.draw = function(subset)
         //Add the check cell class
         jviz.dom.class.add(cell_id, this._body.cell.check.class);
 
+        //Get the box id
+        var box_id = this._body.cell.check.id + index;
+
+        //Save the default value
+        var box_checked = this._data.check[index];
+
+        //Save the checkbox class
+        var box_class = this._check.class;
+
         //Build the checkbox
-        var cell_box = new jviz.components.checkbox({ parent: cell_id, class: this._check.class, checked: this._data.check[index] });
+        this._check.el[index] = new jviz.components.checkbox({ parent: cell_id, id: box_id, class: box_class, checked: box_checked });
 
         //Continue
         continue;
