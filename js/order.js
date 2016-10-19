@@ -2,13 +2,13 @@
 jviz.modules.tab.prototype.order = function(columns)
 {
   //Check the columns argument
-  if(typeof columns === 'undefined'){ return this.orderClear(); }
+  if(typeof columns === 'undefined'){ return this.clearOrder(); }
 
   //Check the columns keys
-  if(Object.keys(columns).length === 0){ return this.orderClear(); }
+  if(Object.keys(columns).length === 0){ return this.clearOrder(); }
 
   //Check the order array
-  if(this._data.order.length === 0){ this.orderClear(); }
+  if(this._data.order.length === 0){ this.clearOrder(); }
 
   //Get the data
   var data = this._data.src;
@@ -34,7 +34,7 @@ jviz.modules.tab.prototype.order = function(columns)
 };
 
 //Clear the order
-jviz.modules.tab.prototype.orderClear = function()
+jviz.modules.tab.prototype.clearOrder = function()
 {
   //Clear the order array
   //this._data.order = Array.apply(null, Array(this._data.src.length)).map(function(v, i){ return i; });
