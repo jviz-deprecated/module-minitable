@@ -20,7 +20,7 @@ jviz.modules.tab.prototype.addClass = function(index, name)
   this._data.class[index].push(name);
 
   //Check for update now the class
-  if(jviz.math.array.has(this._draw.active, index) === false){ return this; }
+  if(jviz.math.array.has(this._draw.rows, index) === false){ return this; }
 
   //Add the class to the row
   jviz.dom.class.add(this._body.row.id + index, name);
@@ -48,7 +48,7 @@ jviz.modules.tab.prototype.removeClass = function(index, name)
   jviz.math.array.remove(this._data.class[index], name);
 
   //Check for update now the class
-  if(jviz.math.array.has(this._draw.active, index) === false){ return this; }
+  if(jviz.math.array.has(this._draw.rows, index) === false){ return this; }
 
   //Add the class to the row
   jviz.dom.class.remove(this._body.row.id + index, name);
@@ -70,7 +70,7 @@ jviz.modules.tab.prototype.clearClass = function()
     if(this._data.class[i].length === 0){ continue; }
 
     //Check the index
-    if(jviz.math.array.has(this._draw.active, index) === true)
+    if(jviz.math.array.has(this._draw.rows, index) === true)
     {
       //Get the row ID
       var row = this._body.row.id + i;
