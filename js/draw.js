@@ -19,11 +19,11 @@ jviz.modules.tab.prototype.draw = function(subset)
   //Parse the subset end point
   this._draw.end = (typeof subset.end === 'undefined') ? max_size : Math.min(max_size, parseInt(subset.end));
 
-  //Array with the added rows
-  var rows = [];
-
   //Reset the checked element
   this._check.el = [];
+
+  //Reset the active rows
+  this._draw.rows = [];
 
   //Display the data
   for(var i = this._draw.start; i <= this._draw.end; i++)
@@ -95,18 +95,22 @@ jviz.modules.tab.prototype.draw = function(subset)
       }
     }
 
-    //Save the row index and ID
-    rows.push({ id: row_id, index: index });
+    //Save the row index
+    this._draw.rows.push(index);
+    //rows.push({ id: row_id, index: index });
   }
 
   //Add the events
-  for(var i = 0; i < rows.length; i++)
+  for(var i = 0; i < this._draw.rows.length; i++)
   {
     //Add the row event
-    this.rowsEvent(rows[i].index);
+    this.rowsEvent(this._draw.rows[i].index);
+
+    //Check if checkboxes are enabled
+    if(this._check.enabled === false){ continue; }
 
     //Add the checkbox event
-    this.checkEvent(rows[i].index);
+    this.checkEvent(this._draw.rows[i].index);
   }
 
   //Show in console
