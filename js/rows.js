@@ -31,7 +31,7 @@ jviz.modules.tab.prototype.rows = function(sel)
 };
 
 //Return only the checked rows
-jviz.modules.tab.prototype.selectedRows = function()
+jviz.modules.tab.prototype.checkedRows = function()
 {
 
 };
@@ -39,13 +39,24 @@ jviz.modules.tab.prototype.selectedRows = function()
 //Set the row background color
 jviz.modules.tab.prototype.rowBg = function(index, color)
 {
-  //
+  //Check for undefined color
+  if(typeof color === 'undefined'){ return this; }
+
+  //Add the color
+  jviz.dom.style(this._body.row.id + index, 'background-color', color);
+
+  //Return this
+  return this;
 };
 
 //Clear the row background color
 jviz.modules.tab.prototype.rowBgClear = function(index)
 {
-  //
+  //Remove the color
+  jviz.dom.style(this._body.row.id + index, 'background-color', '');
+
+  //Return this
+  return this;
 };
 
 //Add a class to the row
@@ -54,11 +65,8 @@ jviz.modules.tab.prototype.addRowClass = function(index, name)
   //Check for undefined class name
   if(typeof name === 'undefined'){ return this; }
 
-  //Get the row id
-  var id = this._body.row.id + index;
-
   //Add the class to the row
-  jviz.dom.class.add(id, name);
+  jviz.dom.class.add(this._body.row.id + index, name);
 
   //Return this
   return this;
@@ -70,11 +78,8 @@ jviz.modules.tab.prototype.removeRowClass = function(index, name)
   //Check for undefined class name
   if(typeof name === 'undefined'){ return this; }
 
-  //Get the row id
-  var id = this._body.row.id + index;
-
   //Add the class to the row
-  jviz.dom.class.remove(id, name);
+  jviz.dom.class.remove(this._body.row.id + index, name);
 
   //Return this
   return this;
