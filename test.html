@@ -15,7 +15,7 @@
     var t = null;
 
     //Document ready function
-    $(document).ready(function()
+    jviz.dom.ready(function()
     {
       //Table options
       var opt = { parent: 'test', id: 'myTable' };
@@ -23,9 +23,10 @@
       //Columns
       opt.columns =
       [
-        { title: 'Cell 1', key: 'key1' },
-        { title: 'Cell 2', key: 'key2' },
-        { title: 'Cell 3', key: 'key3' }
+        { type: 'checkbox' },
+        { type: 'default', title: 'Cell 1', key: 'key1' },
+        { type: 'default', title: 'Cell 2', key: 'key2' },
+        { type: 'default', title: 'Cell 3', key: 'key3' }
       ];
 
       //Data
@@ -39,6 +40,12 @@
 
       //Initialize the table
       t = new jviz.modules.tab(opt);
+
+      //Add the check event
+      t.on('check:row', function(row, index){ console.log('Checked row ' + index); });
+
+      //Add the uncheck event
+      t.on('uncheck:row', function(row, index){ console.log('Unchecked row ' + index); });
     });
   </script>
   <div id="test"></div>
