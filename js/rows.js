@@ -30,57 +30,38 @@ jviz.modules.tab.prototype.rows = function(sel)
   return out;
 };
 
-//Return only the checked rows
-jviz.modules.tab.prototype.checkedRows = function()
+//Add the row event
+jviz.modules.tab.prototype.rowsEvent = function(index)
 {
+  //Save this
+  var self = this;
 
+  //Read all the columns
+  this._columns.src.forEach(function(col, col_id)
+  {
+    //Check the column display
+    if(col.display === false){ return true; }
+
+    //Check for checkbox
+    if(col.type === 'checkbox'){ return true; }
+
+    //Get the column id
+    var id = self._body.cell.id + index + '_' + col_id;
+
+    //Add the column event
+    jviz.dom.event('click', function(e){ return self.rowsClick(index, col_id); });
+  });
+
+  //Add the row event
+  //$('#' + rows[i].id).on('click', function(e){ return self.onClickRow(rows[i].index); });
 };
 
-//Set the row background color
-jviz.modules.tab.prototype.rowBg = function(index, color)
+//Row click
+jviz.modules.tab.prototype.rowsClick = function(index_row, index_cell)
 {
-  //Check for undefined color
-  if(typeof color === 'undefined'){ return this; }
+  //Show in console
+  console.log('Clicked on row ' + index_row + ' and cell ' + index_cell);
 
-  //Add the color
-  jviz.dom.style(this._body.row.id + index, 'background-color', color);
-
-  //Return this
-  return this;
-};
-
-//Clear the row background color
-jviz.modules.tab.prototype.rowBgClear = function(index)
-{
-  //Remove the color
-  jviz.dom.style(this._body.row.id + index, 'background-color', '');
-
-  //Return this
-  return this;
-};
-
-//Add a class to the row
-jviz.modules.tab.prototype.addRowClass = function(index, name)
-{
-  //Check for undefined class name
-  if(typeof name === 'undefined'){ return this; }
-
-  //Add the class to the row
-  jviz.dom.class.add(this._body.row.id + index, name);
-
-  //Return this
-  return this;
-};
-
-//Remove a class from the specified row
-jviz.modules.tab.prototype.removeRowClass = function(index, name)
-{
-  //Check for undefined class name
-  if(typeof name === 'undefined'){ return this; }
-
-  //Add the class to the row
-  jviz.dom.class.remove(this._body.row.id + index, name);
-
-  //Return this
-  return this;
+  //Call the event listener
+  this._events.emit('click:row', this._data.src[index], this._columns.src[index_cell].key, index_row, index_cell);
 };
