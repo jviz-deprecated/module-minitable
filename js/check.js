@@ -15,7 +15,7 @@ jviz.modules.tab.prototype.check = function(index, emit_event)
   }
 
   //Check if all checkboxes are active
-  if(jviz.math.array.has(this._data.check, false) === false)
+  if(jviz.array.has(this._data.check, false) === false)
   {
     //Set all checkboxes as true
     this._check.all = true;
@@ -161,7 +161,7 @@ jviz.modules.tab.prototype.checked = function()
 jviz.modules.tab.prototype.clearCheck = function()
 {
   //Remove all checks
-  this._data.check = jviz.math.array.create(this._data.src.length, false);
+  this._data.check = jviz.array.create(this._data.src.length, false);
 };
 
 //Check event
