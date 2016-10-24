@@ -1,0 +1,26 @@
+{
+  "name": "tab",
+  "description": "The base table module for jviz",
+  "version": "0.0.1",
+  "author": { "id": "jmjuanes", "name": "Jose Miguel Juanes", "email": "josemijuanes@gmail.com" },
+  "directory": "./build",
+  "repository": "https://github.com/jviz/module-tab",
+  "dependencies": { "jviz": "dev" },
+  "tasks":
+  {
+    "build:js":
+    [
+      { "name": "src", "args": [ "./js/tab.js", "./js/**.js" ] },
+      { "name": "concat", "args": "tab.js" },
+      { "name": "dest", "args": "./" }
+    ],
+    "build:scss":
+    [
+      { "name": "src", "args": "./scss/**.scss" },
+      { "name": "sass" },
+      { "name": "dest", "args": "./" }
+    ]
+  },
+  "build": [ "build:js", "build:scss" ],
+  "install": [ ]
+}
