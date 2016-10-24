@@ -5,7 +5,7 @@ jviz.modules.tab = function(opt)
   if(typeof opt === 'undefined'){ return console.error('jviz-tab: undefined table options. Check the documentation.'); }
 
   //Check the table id
-  this._id = (typeof opt.id === 'undefined') ? jviz.utils.getID({ prefix: 'jviz-tab' }) : opt.id;
+  this._id = (typeof opt.id === 'undefined') ? jviz.misc.getID({ prefix: 'jviz-tab' }) : opt.id;
 
   //Check the table class
   this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-tab' : opt.class;
@@ -84,7 +84,7 @@ jviz.modules.tab = function(opt)
   this._check.el = [];
 
   //Build the events
-  this._events = new jviz.events();
+  this._events = new jviz.commons.events();
 
   //Build the table
   this.build();
