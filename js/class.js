@@ -11,13 +11,13 @@ jviz.modules.tab.prototype.addClass = function(index, name)
   if(index < 0 || this._data.src.length <= index){ return this; }
 
   //Check if the row has this class
-  if(jviz.math.array.has(this._data.class[index], name) === true){ return this; }
+  if(jviz.array.has(this._data.class[index], name) === true){ return this; }
 
   //Add the class
   this._data.class[index].push(name);
 
   //Check for update now the class
-  if(jviz.math.array.has(this._draw.rows, index) === false){ return this; }
+  if(jviz.array.has(this._draw.rows, index) === false){ return this; }
 
   //Add the class to the row
   jviz.dom.class.add(this._body.row.id + index, name);
@@ -42,10 +42,10 @@ jviz.modules.tab.prototype.removeClass = function(index, name)
   if(this._data.class[index].length === 0){ return this; }
 
   //Delete the class
-  jviz.math.array.remove(this._data.class[index], name);
+  jviz.array.remove(this._data.class[index], name);
 
   //Check for update now the class
-  if(jviz.math.array.has(this._draw.rows, index) === false){ return this; }
+  if(jviz.array.has(this._draw.rows, index) === false){ return this; }
 
   //Add the class to the row
   jviz.dom.class.remove(this._body.row.id + index, name);
