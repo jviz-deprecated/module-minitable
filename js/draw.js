@@ -80,6 +80,9 @@ jviz.modules.tab.prototype.draw = function(subset)
       //Get the content
       var content = (typeof cell.parse === 'function') ? cell.parse(cell.key, data, index, cell) : data[cell.key];
 
+      //Check for undefined content
+      if(typeof content === 'undefined'){ var content = ''; } 
+
       //Add the content
       jviz.dom.html(cell_id, content);
     }
