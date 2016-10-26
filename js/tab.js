@@ -35,6 +35,11 @@ jviz.modules.tab = function(opt)
   this._draw.end = -1; //Draw end position
   this._draw.rows = []; //Rows active
 
+  //Table
+  this._table = {};
+  this._table.id = this._id + '-table'; //Table ID
+  this._table.class = this._class + '-table'; //Table class
+
   //Table head
   this._head = {};
   this._head.id = this._id + '-head'; //Table head id
