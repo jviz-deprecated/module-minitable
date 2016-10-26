@@ -13,6 +13,9 @@ jviz.modules.tab.prototype.build = function()
   //Append the table body
   jviz.dom.append(this._table.id, { id: this._body.id, class: this._body.class });
 
+  //Set the table height
+  this.height(this._height);
+
   //Parse and build the columns
   this.columns(this._columns.src);
 
