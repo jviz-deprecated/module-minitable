@@ -10,6 +10,9 @@ jviz.modules.tab.prototype.columns = function(list)
   //Save the list
   this._columns.src = this.parseColumns(list);
 
+  //Reset the checkboxes enabled
+  this._check.enabled = false;
+
   //Check the size
   if(this._columns.src.length === 0){ return this; }
 
