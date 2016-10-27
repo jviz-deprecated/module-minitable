@@ -95,6 +95,18 @@ the function provided will he called when the user clicks on some cell of the he
 
 This event will be executed when the user clicks on a cell of the header.
 
+#### tab.on('filter:apply', listener)
+
+Emit the `listener` function when the data is filtered. The function will be called with the following arguments:
+
+- `length`: number of rows that have passed the filter.
+
+#### tab.on('filter:reset', listener)
+
+Emit the `listener` function when the filter is reset. The function will be called with the following arguments:
+
+- `length`: number of rows of the original data.
+
 
 ## License
 
