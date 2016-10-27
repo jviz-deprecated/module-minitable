@@ -40,7 +40,7 @@ jviz.modules.tab.prototype.ajaxDone = function(data)
   this.data(data);
 
   //Draw the data
-  return this.draw();
+  //return this.draw();
 };
 
 //Ajax error
