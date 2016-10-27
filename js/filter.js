@@ -27,7 +27,11 @@ jviz.modules.tab.prototype.filter = function(condition)
   this._data.length = this._data.filter.length;
 
   //Reset the order
-  this.clearOrder();
+  //this.clearOrder();
+  this.resetOrder();
+
+  //Order again the data
+  this.order(this._columns.order);
 
   //Reset the checkboxes
   //this.clearCheck();
@@ -52,7 +56,11 @@ jviz.modules.tab.prototype.clearFilter = function()
   this._events.emit('filter:reset', this._data.length);
 
   //Reset the order
-  this.clearOrder();
+  //this.clearOrder();
+  this.resetOrder();
+
+  //Order again the data
+  this.order(this._columns.order);
 
   //Return this
   return this;
