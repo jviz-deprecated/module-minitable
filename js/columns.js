@@ -119,7 +119,14 @@ jviz.modules.tab.prototype.parseColumns = function(list)
     if(el.type === 'checkbox' && has_checkbox === true){ console.error('Only one checkbox column is allowed'); continue; }
 
     //Check for checkbox
-    if(el.type === 'checkbox'){ has_checkbox = true; }
+    if(el.type === 'checkbox')
+    {
+      //Check the all property
+      if(typeof el.all !== 'boolean'){ el.all = true; }
+
+      //Set that has checkbox
+      has_checkbox = true; 
+    }
 
     //Check the key
     if(typeof el.key === 'undefined'){ el.key = ''; }
