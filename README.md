@@ -107,6 +107,13 @@ Emit the `listener` function when the filter is reset. The function will be call
 
 - `length`: number of rows of the original data.
 
+#### tab.on('order:apply', listener)
+
+Emit the `listener` function when the data is ordered.
+
+#### tab.on('order:reset', listener)
+
+Emit the `listener` function when the order is reset.
 
 ## License
 
