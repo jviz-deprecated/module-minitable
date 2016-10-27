@@ -26,5 +26,8 @@ jviz.modules.tab.prototype.build = function()
   this.data(this._data.src);
 
   //Draw the data
-  return this.draw();
+  //return this.draw();
+
+  //Continue
+  return this;
 };
