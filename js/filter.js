@@ -33,7 +33,7 @@ jviz.modules.tab.prototype.filter = function(condition)
   //this.clearCheck();
 
   //Send the event
-  this._events.emit('data:filtered', this._data.filter, this._data.length);
+  this._events.emit('filter:apply', this._data.length);
 
   //Return this
   return this;
@@ -47,6 +47,9 @@ jviz.modules.tab.prototype.clearFilter = function()
 
   //Update the data length
   this._data.length = this._data.src.length;
+
+  //Send the filter reset event
+  this._events.emit('filter:reset', this._data.length);
 
   //Reset the order
   this.clearOrder();
