@@ -24,7 +24,7 @@ jviz.modules.tab.prototype.order = function(columns)
   });
 
   //Send the event
-  this._events.emit('data:ordered', columns, this._data.order, this._data.length);
+  this._events.emit('order:apply', columns);
 
   //Save the columns ordered
   this._columns.order = columns;
@@ -42,6 +42,9 @@ jviz.modules.tab.prototype.clearOrder = function()
 
   //Reset the columns order
   this._columns.order = {};
+
+  //Send the event
+  this._events.emit('order:reset');
 
   //Return this
   return this;
