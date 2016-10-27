@@ -2,13 +2,20 @@
 jviz.modules.tab.prototype.order = function(columns)
 {
   //Check the columns argument
-  if(typeof columns === 'undefined'){ return this.clearOrder(); }
+  if(typeof columns !== 'object'){ return this._columns.order; }
 
   //Check the columns keys
   if(Object.keys(columns).length === 0){ return this.clearOrder(); }
 
   //Check the order array
-  if(this._data.order.length === 0){ this.clearOrder(); }
+  if(this._data.order.length === 0)
+  {
+    //Clear the order
+    //this.clearOrder();
+
+    //Reset the order array
+    this.resetOrder();
+  }
 
   //Get the data
   var data = this._data.src;
@@ -24,7 +31,7 @@ jviz.modules.tab.prototype.order = function(columns)
   });
 
   //Send the event
-  this._events.emit('order:apply', columns);
+  this._events.emit('order', columns);
 
   //Save the columns ordered
   this._columns.order = columns;
@@ -38,15 +45,22 @@ jviz.modules.tab.prototype.clearOrder = function()
 {
   //Clear the order array
   //this._data.order = Array.apply(null, Array(this._data.src.length)).map(function(v, i){ return i; });
-  this._data.order = this._data.filter.concat([]);
+  this.resetOrder();
 
   //Reset the columns order
   this._columns.order = {};
 
-  //Send the event
-  this._events.emit('order:reset');
-
   //Return this
+  return this;
+};
+
+//Reset the order
+jviz.modules.tab.prototype.resetOrder = function()
+{
+  //Reset the order
+  this._data.order = this._data.filter.concat([]);
+
+  //Continue
   return this;
 };
 
