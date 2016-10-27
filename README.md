@@ -107,13 +107,11 @@ Emit the `listener` function when the filter is reset. The function will be call
 
 - `length`: number of rows of the original data.
 
-#### tab.on('order:apply', listener)
+#### tab.on('order', listener)
 
-Emit the `listener` function when the data is ordered.
+Emit the `listener` function when the data is ordered. The function will be called with the following arguments:
 
-#### tab.on('order:reset', listener)
-
-Emit the `listener` function when the order is reset.
+- `columns`: an array with the format `{ key: 'COLUMN_KEY', order: 'ASC|DESC' }`, where each element of the array is the order of one column.
 
 ## License
 
