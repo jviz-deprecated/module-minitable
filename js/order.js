@@ -78,4 +78,4 @@ jviz.modules.tab.prototype.orderCompare = function(left, right, columns, data)
 
   //Default, return 0
   return 0;
-}
+};
