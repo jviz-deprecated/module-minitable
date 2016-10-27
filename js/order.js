@@ -67,6 +67,32 @@ jviz.modules.tab.prototype.resetOrder = function()
   return this;
 };
 
+//Parse the order list
+jviz.modules.tab.prototype.parseOrder = function(list)
+{
+  //Parse the list
+  list = list.filter(function(el, index)
+  {
+    //Check the key
+    if(typeof el.key !== 'string'){ console.error('Undefined key on element ' + index); return false; }
+
+    //Check the order
+    if(typeof el.order !== 'string'){ console.error('Undefined order on element ' + index); return false; }
+
+    //Parse the order value
+    el.order = el.order.toLowerCase();
+
+    //Check the order value
+    if(['asc', 'desc'].indexOf(el.order) === -1){ el.order = 'asc'; }
+    
+    //Return true
+    return true;
+  });
+
+  //Return the list
+  return list;
+};
+
 //Function for compare two elements
 jviz.modules.tab.prototype.orderCompare = function(left, right, columns, data)
 {
