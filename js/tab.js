@@ -29,7 +29,7 @@ jviz.modules.tab = function(opt)
   //Columns
   this._columns = {};
   this._columns.src = (typeof opt.columns === 'undefined') ? [] : opt.columns;
-  this._columns.order = {};
+  this._columns.order = [];
   this._columns.type = [ 'default', 'checkbox', 'button' ]; //Columns type
 
   //Draw info
