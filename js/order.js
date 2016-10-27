@@ -7,7 +7,10 @@ jviz.modules.tab.prototype.order = function(columns)
   //Check for array
   if(Array.isArray(columns) === false){ columns = [ columns ]; }
 
-  //Check the columns keys
+  //Parse the columns order
+  columns = this.parseOrder(columns);
+
+  //Check the columns length
   if(columns.length === 0){ return this.clearOrder(); }
 
   //Check the order array
@@ -84,7 +87,7 @@ jviz.modules.tab.prototype.parseOrder = function(list)
 
     //Check the order value
     if(['asc', 'desc'].indexOf(el.order) === -1){ el.order = 'asc'; }
-    
+
     //Return true
     return true;
   });
