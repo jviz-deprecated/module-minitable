@@ -81,7 +81,7 @@ jviz.modules.tab.prototype.draw = function(subset)
       var content = (typeof cell.parse === 'function') ? cell.parse(cell.key, data, index, cell) : data[cell.key];
 
       //Check for undefined content
-      if(typeof content === 'undefined'){ var content = ''; } 
+      if(typeof content === 'undefined'){ var content = ''; }
 
       //Add the content
       jviz.dom.html(cell_id, content);
@@ -121,3 +121,9 @@ jviz.modules.tab.prototype.draw = function(subset)
   //Return this
   return this;
 };
+
+//Get the draw start point
+jviz.modules.tab.prototype.drawStart = function(){ return this._draw.start; };
+
+//Get the draw end point
+jviz.modules.tab.prototype.drawEnd = function(){ return this._draw.end; };
