@@ -126,4 +126,4 @@ jviz.modules.tab.prototype.draw = function(subset)
 jviz.modules.tab.prototype.drawStart = function(){ return this._draw.start; };
 
 //Get the draw end point
-jviz.modules.tab.prototype.drawEnd = function(){ return this._draw.end; }; 
+jviz.modules.tab.prototype.drawEnd = function(){ return this._draw.end; };
