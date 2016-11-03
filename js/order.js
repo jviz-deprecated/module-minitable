@@ -56,6 +56,40 @@ jviz.modules.tab.prototype.clearOrder = function()
   //this._data.order = Array.apply(null, Array(this._data.src.length)).map(function(v, i){ return i; });
   this.resetOrder();
 
+  //Read all the columns
+  for(var i = 0; i < this._columns.order.length; i++)
+  {
+    //Get the element
+    var el = this._columns.order[i];
+
+    //Check the index
+    if(el.index === -1){ continue; }
+
+    //Get the column
+    var col = this._columns.src[el.index];
+
+    //Check the display
+    if(col.display === false){ continue; }
+
+    //Check the type
+    if(col.type !== 'default'){ continue; }
+
+    //Check for orderable
+    if(col.orderable === false){ continue; }
+
+    //Get the column head id
+    var col_id = this._head.cell.id + el.index;
+
+    //Remove the asc class
+    jviz.dom.class.remove(col_id, this._head.cell.orderable.asc);
+
+    //Remove the desc class
+    jviz.dom.class.remove(col_id, this._head.cell.orderable.desc);
+
+    //Add the none class
+    jviz.dom.class.add(col_id, this._head.cell.orderable.none);
+  }
+
   //Reset the columns order
   this._columns.order = [];
 
@@ -76,7 +110,48 @@ jviz.modules.tab.prototype.resetOrder = function()
 //Change the order of a column
 jviz.modules.tab.prototype.orderChange = function(index)
 {
-  //
+  //Display in console
+  console.log('Change order column ' + index);
+
+  //Initialize the order index
+  var col = -1;
+
+  //Find the column
+  for(var i = 0; i < this._columns.order.length; i++)
+  {
+    //Check the order column index
+    if(this._columns.order[i].index !== index){ continue; }
+
+    //Save the order column index
+    col = i;
+
+    //Exit
+    break;
+  }
+
+  //Check the order index
+  if(col === -1)
+  {
+    //Reset the orders
+    this.clearOrder();
+
+    //Add the new column
+    this._columns.order.push({ key: this.columnKey(index), order: 'asc', index: index });
+  }
+  else
+  {
+    //Update the key
+    this._columns.order[col].order = (this._columns.order[col].order === 'asc') ? 'desc' : 'asc';
+  }
+
+  //Order the table
+  this.order(this._columns.order);
+
+  //Apply the order class
+  this.orderClass(index);
+
+  //Exit
+  return this;
 };
 
 //Add the order class to a column
@@ -84,6 +159,12 @@ jviz.modules.tab.prototype.orderClass = function(index)
 {
   //Check if column is visible
   if(this._columns.src[index].display === false){ return this; }
+
+  //Check if column is orderable
+  if(this._columns.src[index].orderable === false){ return this; }
+
+  //Check if column is a checkbox
+  if(this._columns.src[index].type !== 'default'){ return this; }
 
   //Get the column head index
   var col_id = this._head.cell.id + index;
