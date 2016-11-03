@@ -1,3 +1,10 @@
+//Get the head ID of a column
+jviz.modules.tab.prototype.headID = function(id)
+{
+  //Return the head ID
+  return this._head.id + id;
+};
+
 //Head checkbox check
 jviz.modules.tab.prototype.headCheck = function()
 {
