@@ -164,7 +164,7 @@ jviz.modules.tab.prototype.parseColumns = function(list)
     if(typeof el.display === 'undefined'){ el.display = true; }
 
     //Check the orderable attribute
-    if(typeof el.orderable === 'undefined'){ el.orderable = true; }
+    if(typeof el.orderable === 'undefined'){ el.orderable = false; }
 
     //Check the column parse function
     if(typeof el.parse === 'undefined'){  }
@@ -184,7 +184,7 @@ jviz.modules.tab.prototype.columnIndex = function(key)
   for(var i = 0; i < this._columns.src.length; i++)
   {
     //Check the column
-    if(this._columns.src[i].key === key){ return i; } 
+    if(this._columns.src[i].key === key){ return i; }
   }
 
   //Return not found
