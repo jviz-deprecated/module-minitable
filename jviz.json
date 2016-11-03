@@ -19,8 +19,13 @@
       { "name": "src", "args": "./scss/**.scss" },
       { "name": "sass" },
       { "name": "dest", "args": "./" }
+    ],
+    "build:img":
+    [
+      { "name": "src", "args": "./img/**.svg" },
+      { "name": "dest", "args": "./img/" }
     ]
   },
-  "build": [ "build:js", "build:scss" ],
+  "build": [ "build:js", "build:scss", "build:img" ],
   "install": [ ]
 }
