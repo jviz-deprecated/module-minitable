@@ -59,6 +59,22 @@
       //Last child
       &:last-child { border-top-right-radius: 5px !important; }
 
+      //Orderable cell
+      &-orderable
+      {
+        //Background
+        background-size: 15px 30px; background-position: center right; background-repeat: no-repeat;
+
+        //No order
+        &-none { background-image: url('./img/tab_order_none.svg'); }
+
+        //Asc order
+        &-asc { background-image: url('./img/tab_order_asc.svg'); }
+
+        //Desc order
+        &-desc { background-image: url('./img/tab_order_desc.svg'); } 
+      }
+
       //Checkbox cell
       &-check { width: 26px; padding: { right: 10px !important; } }
     }
