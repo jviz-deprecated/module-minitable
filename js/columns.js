@@ -5,7 +5,7 @@ jviz.modules.tab.prototype.columns = function(list)
   if(typeof list === 'undefined'){ return this._columns.src; }
 
   //Append the head row
-  jviz.dom.html(this._head.id, { _tag: 'div', id: this._head.row.id, class: this._head.row.class });
+  jviz.dom.html(this._head.id, { id: this._head.row.id, class: this._head.row.class });
 
   //Save the list
   this._columns.src = this.parseColumns(list);
@@ -61,7 +61,7 @@ jviz.modules.tab.prototype.columns = function(list)
   for(let i = 0; i < this._columns.src.length; i++)
   {
     //Check for orderable
-    if(this._columns.src[i].orderable === false){ continue; }
+    //if(this._columns.src[i].orderable === false){ continue; }
 
     //Check for checkbox column
     if(this._columns.src[i].type === 'checkbox'){ continue; }
@@ -125,7 +125,7 @@ jviz.modules.tab.prototype.parseColumns = function(list)
       if(typeof el.all !== 'boolean'){ el.all = true; }
 
       //Set that has checkbox
-      has_checkbox = true; 
+      has_checkbox = true;
     }
 
     //Check the key
@@ -138,7 +138,7 @@ jviz.modules.tab.prototype.parseColumns = function(list)
     if(typeof el.display === 'undefined'){ el.display = true; }
 
     //Check the orderable attribute
-    if(typeof el.orderable === 'undefined'){ el.orderable = true; }
+    //if(typeof el.orderable === 'undefined'){ el.orderable = true; }
 
     //Check the column parse function
     if(typeof el.parse === 'undefined'){  }
