@@ -145,7 +145,7 @@ jviz.modules.tab.prototype.orderChange = function(index)
   }
 
   //Order the table
-  this.order(this._columns.order).draw();
+  this.order(this._columns.order).draw({ start: this._draw.start, end: this._draw.end });
 
   //Apply the order class
   this.orderClass(index);
