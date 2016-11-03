@@ -10,8 +10,11 @@ jviz.modules.tab.prototype.order = function(columns)
   //Parse the columns order
   columns = this.parseOrder(columns);
 
+  //Clear the order
+  this.clearOrder();
+
   //Check the columns length
-  if(columns.length === 0){ return this.clearOrder(); }
+  if(columns.length === 0){ return this; }
 
   //Check the order array
   if(this._data.order.length === 0)
@@ -70,9 +73,62 @@ jviz.modules.tab.prototype.resetOrder = function()
   return this;
 };
 
+//Change the order of a column
+jviz.modules.tab.prototype.orderChange = function(index)
+{
+  //
+};
+
+//Add the order class to a column
+jviz.modules.tab.prototype.orderClass = function(index)
+{
+  //Check if column is visible
+  if(this._columns.src[index].display === false){ return this; }
+
+  //Get the column head index
+  var col_id = this._head.cell.id + index;
+
+  //Remove the none class
+  jviz.dom.class.remove(col_id, this._head.cell.orderable.none);
+
+  //Remove the asc class
+  jviz.dom.class.remove(col_id, this._head.cell.orderable.asc);
+
+  //Remove the desc order
+  jviz.dom.class.remove(col_id, this._head.cell.orderable.desc);
+
+  //Initialize the none order class
+  var col_class = this._head.cell.orderable.none;
+
+  //Find the column
+  for(var i = 0; i < this._columns.order.length; i++)
+  {
+    //Get the column
+    var col = this._columns.order[i];
+
+    //Check the column index
+    if(col.index !== index){ continue; }
+
+    //Get the class
+    col_class = (col.order === 'desc') ? this._head.cell.orderable.desc : this._head.cell.orderable.asc;
+
+    //Exit
+    break;
+  }
+
+  //Add the none order
+  jviz.dom.class.add(col_id, col_class);
+
+  //Continue
+  return this;
+};
+
 //Parse the order list
 jviz.modules.tab.prototype.parseOrder = function(list)
 {
+  //Save this
+  var self = this;
+
   //Parse the list
   list = list.filter(function(el, index)
   {
@@ -81,6 +137,9 @@ jviz.modules.tab.prototype.parseOrder = function(list)
 
     //Check the order
     if(typeof el.order !== 'string'){ console.error('Undefined order on element ' + index); return false; }
+
+    //Check the column index
+    if(typeof el.index === 'undefined'){ el.index = self.columnIndex(el.key); }
 
     //Parse the order value
     el.order = el.order.toLowerCase();
