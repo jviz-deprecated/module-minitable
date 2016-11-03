@@ -110,9 +110,6 @@ jviz.modules.tab.prototype.resetOrder = function()
 //Change the order of a column
 jviz.modules.tab.prototype.orderChange = function(index)
 {
-  //Display in console
-  console.log('Change order column ' + index);
-
   //Initialize the order index
   var col = -1;
 
