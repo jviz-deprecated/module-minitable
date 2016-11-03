@@ -50,6 +50,16 @@ jviz.modules.tab.prototype.columns = function(list)
       continue;
     }
 
+    //Check for orderable cell
+    if(cell.orderable === true)
+    {
+      //Add the base class
+      jviz.dom.class.add(cell_id, this._head.cell.orderable.class);
+
+      //Add the actual order class
+      this.orderClass(i);
+    }
+
     //Default, add the cell title
     jviz.dom.html(cell_id, cell.title);
   }
@@ -58,17 +68,33 @@ jviz.modules.tab.prototype.columns = function(list)
   var self = this;
 
   //Add all the events
-  for(let i = 0; i < this._columns.src.length; i++)
+  this._columns.src.forEach(function(cell, index)
   {
-    //Check for orderable
-    //if(this._columns.src[i].orderable === false){ continue; }
-
     //Check for checkbox column
-    if(this._columns.src[i].type === 'checkbox'){ continue; }
+    if(cell.type === 'checkbox'){ return true; }
+
+    //Check for display
+    if(cell.display === false){ return true; }
+
+    //Get the cell ID
+    var id = self._head.cell.id + index;
+
+    //Check for orderable
+    if(cell.orderable === true)
+    {
+      //Add the order change event
+      jviz.dom.on(id, 'click', function(){ return self.orderChange(index); });
+
+      //Continue
+      return true;
+    }
 
     //Add the event for this column
-    $('#' + self._head.cell.id + i).click(function(e){ return self.columnsClick(i); });
-  }
+    jviz.dom.on(id, 'click', function(){ return self.columnsClick(index); });
+
+    //Continue
+    return true;
+  });
 
   //Set the checkbox event
   if(this._check.enabled === true)
@@ -138,7 +164,7 @@ jviz.modules.tab.prototype.parseColumns = function(list)
     if(typeof el.display === 'undefined'){ el.display = true; }
 
     //Check the orderable attribute
-    //if(typeof el.orderable === 'undefined'){ el.orderable = true; }
+    if(typeof el.orderable === 'undefined'){ el.orderable = true; }
 
     //Check the column parse function
     if(typeof el.parse === 'undefined'){  }
@@ -149,4 +175,25 @@ jviz.modules.tab.prototype.parseColumns = function(list)
 
   //Return the parsed list
   return out;
+};
+
+//Get column index by key
+jviz.modules.tab.prototype.columnIndex = function(key)
+{
+  //Read all the columns
+  for(var i = 0; i < this._columns.src.length; i++)
+  {
+    //Check the column
+    if(this._columns.src[i].key === key){ return i; } 
+  }
+
+  //Return not found
+  return -1;
+};
+
+//Get the column key
+jviz.modules.tab.prototype.columnKey = function(index)
+{
+  //Return the column key
+  return this._columns.src[index].key;
 };
