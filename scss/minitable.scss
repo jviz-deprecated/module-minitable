@@ -1,8 +1,8 @@
 //Import jviz
 @import "{JVIZ_MODULES}jviz/scss/all";
 
-//Jviz tables main class
-.jviz-modules-tab
+//Jviz minitable main class
+.jviz-modules-minitable
 {
   //Style
   display: block; width: 100%; overflow-x: auto; overflow-y: auto;
@@ -72,7 +72,7 @@
         &-asc { background-image: url('./img/tab_order_asc.svg'); }
 
         //Desc order
-        &-desc { background-image: url('./img/tab_order_desc.svg'); } 
+        &-desc { background-image: url('./img/tab_order_desc.svg'); }
       }
 
       //Checkbox cell
