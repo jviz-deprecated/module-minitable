@@ -1,5 +1,5 @@
 //Build the table
-jviz.modules.tab.prototype.build = function()
+jviz.modules.minitable.prototype.build = function()
 {
   //Append the table container
   jviz.dom.append(this._parent, { id: this._id, class: this._class });
@@ -15,18 +15,6 @@ jviz.modules.tab.prototype.build = function()
 
   //Set the table height
   this.height(this._height);
-
-  //Parse and build the columns
-  this.columns(this._columns.src);
-
-  //Get the data
-  if(typeof this._data.ajax.url === 'string'){ return this.ajax(); }
-
-  //Parse the data
-  this.data(this._data.src);
-
-  //Draw the data
-  //return this.draw();
 
   //Continue
   return this;
