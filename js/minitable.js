@@ -1,14 +1,14 @@
-//Tab module
-jviz.modules.tab = function(opt)
+//Mini table module
+jviz.modules.minitable = function(opt)
 {
   //Check the options
-  if(typeof opt === 'undefined'){ return console.error('jviz-tab: undefined table options. Check the documentation.'); }
+  if(typeof opt === 'undefined'){ return console.error('jviz-minitable: undefined table options. Check the documentation.'); }
 
   //Check the table id
-  this._id = (typeof opt.id === 'undefined') ? jviz.misc.getID({ prefix: 'jviz-tab' }) : opt.id;
+  this._id = (typeof opt.id === 'undefined') ? jviz.misc.getID({ prefix: 'jviz-minitable' }) : opt.id;
 
   //Check the table class
-  this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-tab' : opt.class;
+  this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-minitable' : opt.class;
 
   //Check the parent div
   this._parent = (typeof opt.parent === 'undefined') ? 'body' : opt.parent;
@@ -19,7 +19,6 @@ jviz.modules.tab = function(opt)
   //Data object
   this._data = {};
   this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data; //Source data
-  this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax; //Ajax data
   this._data.length = 0;
   this._data.order = []; //Order data
   this._data.filter = []; //Filtered data
@@ -105,9 +104,18 @@ jviz.modules.tab = function(opt)
   //Build the table
   this.build();
 
+  //Parse and build the columns
+  this.columns(this._columns.src);
+
+  //Parse the data
+  this.data(this._data.src);
+
+  //Draw the table
+  this.draw();
+
   //Return this
   return this;
 };
 
 //Register an event
-jviz.modules.tab.prototype.on = function(name, listener){ return this._events.add(name, listener); };
+jviz.modules.minitable.prototype.on = function(name, listener){ return this._events.add(name, listener); };
