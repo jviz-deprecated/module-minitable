@@ -1,17 +1,17 @@
 {
-  "name": "tab",
-  "description": "The base table module for jviz",
+  "name": "minitable",
+  "description": "A mini-table module for jviz",
   "version": "0.0.1",
   "author": { "id": "jmjuanes", "name": "Jose Miguel Juanes", "email": "josemijuanes@gmail.com" },
   "directory": "./build",
-  "repository": "https://github.com/jviz/module-tab",
+  "repository": "https://github.com/jviz/module-minitable",
   "dependencies": { "jviz": "dev" },
   "tasks":
   {
     "build:js":
     [
-      { "name": "src", "args": [ "./js/tab.js", "./js/**.js" ] },
-      { "name": "concat", "args": "tab.js" },
+      { "name": "src", "args": [ "./js/minitable.js", "./js/**.js" ] },
+      { "name": "concat", "args": "minitable.js" },
       { "name": "dest", "args": "./" }
     ],
     "build:scss":
